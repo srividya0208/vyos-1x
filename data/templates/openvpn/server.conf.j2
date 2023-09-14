@@ -213,10 +213,10 @@ tls-server
 # Encryption options
 {% if encryption is vyos_defined %}
 {%     if encryption.cipher is vyos_defined %}
-cipher {{ encryption.cipher | openvpn_cipher }}
-{%         if encryption.cipher is vyos_defined('bf128') %}
+data-ciphers {{ encryption.cipher | openvpn_data_ciphers }}
+{%         if encryption.cipher is vyos_defined('aes128gcm') %}
 keysize 128
-{%         elif encryption.cipher is vyos_defined('bf256') %}
+{%         elif encryption.cipher is vyos_defined('aes256gcm') %}
 keysize 256
 {%         endif %}
 {%     endif %}
